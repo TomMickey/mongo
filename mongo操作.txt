@@ -1,0 +1,7 @@
+1.show dbs 显示数据库
+2.use db名  切换到db数据库
+3.show collections 显示集合
+4.db.account.find() 查询集合的结果
+5.use db名 可以直接创建数据库
+6.db.dropDatabase() 删除当前数据库
+7.db.account.drop() 删除集合
