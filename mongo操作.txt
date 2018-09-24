@@ -5,3 +5,9 @@
 5.use db名 可以直接创建数据库
 6.db.dropDatabase() 删除当前数据库
 7.db.account.drop() 删除集合
+8.文档 集合 数据库
+9.db.account.count() 查询集合中的数量
+10.db.account.remove() 清空集合
+11.db.account.count() 统计集合
+12 db.account.drop() 删除集合
+13 dbaccount.update() 更新
