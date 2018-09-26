@@ -10,4 +10,18 @@
 10.db.account.remove() 清空集合
 11.db.account.count() 统计集合
 12 db.account.drop() 删除集合
-13 dbaccount.update() 更新
+13 db.account.update() 更新
+$set $gt $in $not 
+db.account.update({"user":"Jack"},{"$set":{"fulll":"fulee"}})
+
+查询空值
+db.account.find({"user":{"$in":[null],{"$exists":true}}})
+
+mongoDB支持正则表达式查询
+db.account.find({"user":/bbas/i})	用户名包含bbas的文档 i 忽视大小写
+db.account.find({"user":/bbas/i})	用户名包含bbas的文档
+
+插入数组
+db.account.insert({"user":"Jack","love":["swim","sing","job"]})   只要有数组中的一个就能查出文档
+
+db.account.find({"love":{"$all":["swim","sing","job"]}})
