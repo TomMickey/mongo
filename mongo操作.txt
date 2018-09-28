@@ -1,27 +1,51 @@
 1.show dbs 显示数据库
+
 2.use db名  切换到db数据库
+
 3.show collections 显示集合
+
 4.db.account.find() 查询集合的结果
+
 5.use db名 可以直接创建数据库
+
 6.db.dropDatabase() 删除当前数据库
+
 7.db.account.drop() 删除集合
+
 8.文档 集合 数据库
+
 9.db.account.count() 查询集合中的数量
+
 10.db.account.remove() 清空集合
+
 11.db.account.count() 统计集合
+
 12 db.account.drop() 删除集合
+
 13 db.account.update() 更新
+
 $set $gt $in $not 
+
 db.account.update({"user":"Jack"},{"$set":{"fulll":"fulee"}})
 
 查询空值
 db.account.find({"user":{"$in":[null],{"$exists":true}}})
 
 mongoDB支持正则表达式查询
+
 db.account.find({"user":/bbas/i})	用户名包含bbas的文档 i 忽视大小写
+
 db.account.find({"user":/bbas/i})	用户名包含bbas的文档
 
 插入数组
 db.account.insert({"user":"Jack","love":["swim","sing","job"]})   只要有数组中的一个就能查出文档
 
 db.account.find({"love":{"$all":["swim","sing","job"]}})
+
+for(i=0;i<10000;i++){db.account.insert({"username":"bbs"+i})}  for循环插入数据
+
+db.account.insert({"username":"Tom","time":new Date()})
+
+支持多重函数
+
+db.account.find({"username":/bbs15/}).count()   支持正则查询，并且可以统计出查询出来的数量
