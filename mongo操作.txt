@@ -1,31 +1,45 @@
 1.show dbs 显示数据库
-
 2.use db名  切换到db数据库
-
 3.show collections 显示集合
-
-4.db.account.find() 查询集合的结果
-
+4.db.account.find() 查询集合的总数
 5.use db名 可以直接创建数据库
-
 6.db.dropDatabase() 删除当前数据库
-
 7.db.account.drop() 删除集合
-
 8.文档 集合 数据库
-
 9.db.account.count() 查询集合中的数量
-
 10.db.account.remove() 清空集合
-
 11.db.account.count() 统计集合
-
 12 db.account.drop() 删除集合
-
 13 db.account.update() 更新
+14.复合条件查询		db.account.find({"age":{"$lt":40}})
+15.null值查询
+db.account.find({"user":null}) 不仅能匹配null值，而且还能匹配没有user键值的文档
+db.account.find({"user":{"$in":[null],"$exites":true}}) null值查询
+16.正则表达式查询
+db.account.find({"user":/bbs/i})  忽略大小写查询user包含bbs的文档
+17.mongodb支持存储数组
+db.account.insert({"user":"Tom","love":["swim","jog","tv"]})  插入含数组的文档
+单元素匹配任意一个就行
+db.account.find({"love":"swim"})  可以查询出插入的文档
+多元素匹配,使用$all
+db.account.find({"love":{"$all":["swim","jog"]}})  查询出love同时含有swim和jog的文档
+数组下标指定查询	下标以0开始
+db.account.find({"love.1":"jog"})
+数组长度查询
+db.account.find({"love":{"$size":3}}) 查询文档中含有love的值的长度是3的文档
+18.内嵌文档
+db.account.insert({"user":{"first":"yuwen","secod":"math"}})
+内嵌文档查询
+db.account.find({"user.first":"yuwen"})
 
-$set $gt $in $not 
-
+修改器
+$set $gt $in $not $lt $ne 
+$push 
+$addToSet
+$pop
+$pull
+$nin
+$or
 db.account.update({"user":"Jack"},{"$set":{"fulll":"fulee"}})
 
 查询空值
